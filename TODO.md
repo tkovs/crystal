@@ -1,0 +1,10 @@
+- [ ] Separar questões por categoria
+- [ ] Separar questões por prova
+- [ ] Exibir informações ao fim da prova
+  - [ ] Porcentagem de acerto
+  - [ ] Questões acertadas
+  - [ ] Questões erradas
+- [ ] Criação de provas
+  - [ ] Fornecimento do link da nova prova para compartilhar com amigos
+- [ ] Ranking de usuários ordenado por quantidade questões respondidas
+- [ ] Listagem de provas por nível de dificuldade (observando porcentagem de acerto)
