@@ -1,4 +1,4 @@
-## crystals
+## crystal
 ---
 
 Sites e provas com simplicidade e eficiência!
