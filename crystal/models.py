@@ -14,8 +14,17 @@ class Usuario(models.Model):
 		return "{0} ({1} {2})".format(nome, pontuacao, pontos)
 
 class Prova(models.Model):
-	titulo = models.CharField(max_length = 30)
-	autor  = models.ForeignKey(Usuario, on_delete = models.CASCADE)
+	DIFICULDADE_ESCOLHAS = (
+		(1, 'FÁCIL'),
+		(2, 'INICIANTE'),
+		(3, 'COMUM'),
+		(4, 'DIFÍCIL'),
+		(5, 'MESTRE'),
+	)
+
+	titulo      = models.CharField(max_length = 30)
+	autor       = models.ForeignKey(Usuario, on_delete = models.CASCADE)
+	dificuldade = models.IntegerField(default = 3, choices = DIFICULDADE_ESCOLHAS)
 
 	def __str__(self):
 		return "{0} ~ {1}".format(titulo, autor)
