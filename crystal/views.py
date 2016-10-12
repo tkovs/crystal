@@ -16,7 +16,14 @@ def test_list(request):
 	return HttpResponse(template.render(context, request))
 
 def test_details(request, id):
-	pass
+	template = loader.get_template('crystal/prova.html')
+	test = Prova.objects.get(id = id)
+	context = {
+		'title': "Crystal - {0}".format(test.titulo),
+		'test': test
+	}
+
+	return HttpResponse(template.render(context, request))
 
 def ranking(request):
 	template = loader.get_template('crystal/ranking.html')

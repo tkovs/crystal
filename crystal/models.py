@@ -27,7 +27,7 @@ class Prova(models.Model):
 	dificuldade = models.IntegerField(default = 3, choices = DIFICULDADE_ESCOLHAS)
 
 	def __str__(self):
-		return "{0} ~ {1}".format(self.titulo, self.autor)
+		return "{0} ~ {1}".format(self.titulo, self.autor.nome)
 
 class Questao(models.Model):
 	prova      = models.ForeignKey(Prova, on_delete = models.CASCADE)
