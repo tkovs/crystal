@@ -7,11 +7,11 @@ class Usuario(models.Model):
 	def __str__(self):
 		pontos = "pontos"
 
-		if (pontuacao <= 1):
+		if (self.pontuacao <= 1):
 			pontos = "ponto"
 
 
-		return "{0} ({1} {2})".format(nome, pontuacao, pontos)
+		return "{0} ({1} {2})".format(self.nome, self.pontuacao, pontos)
 
 class Prova(models.Model):
 	DIFICULDADE_ESCOLHAS = (
@@ -27,7 +27,7 @@ class Prova(models.Model):
 	dificuldade = models.IntegerField(default = 3, choices = DIFICULDADE_ESCOLHAS)
 
 	def __str__(self):
-		return "{0} ~ {1}".format(titulo, autor)
+		return "{0} ~ {1}".format(self.titulo, self.autor)
 
 class Questao(models.Model):
 	prova      = models.ForeignKey(Prova, on_delete = models.CASCADE)
@@ -40,11 +40,11 @@ class Questao(models.Model):
 	opcao4     = models.CharField(max_length = 60)
 
 	def __str__(self):
-		return "{0} ~ {1}".format(disciplina, enunciado)
+		return "{0} ~ {1}".format(self.disciplina, self.enunciado)
 
 class Realizado(models.Model):
 	usuario = models.ForeignKey(Usuario, on_delete = models.CASCADE)
 	prova   = models.ForeignKey(Prova, on_delete = models.CASCADE)
 
 	def __str__(self):
-		return "{0} ~ {1}".format(usuario.nome, prova.titulo)
+		return "{0} ~ {1}".format(self.usuario.nome, self.prova.titulo)
