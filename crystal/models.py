@@ -22,7 +22,7 @@ class Prova(models.Model):
 		(5, 'MESTRE'),
 	)
 
-	titulo      = models.CharField(max_length = 30)
+	titulo      = models.CharField(max_length = 40)
 	autor       = models.ForeignKey(Usuario, on_delete = models.CASCADE)
 	dificuldade = models.IntegerField(default = 3, choices = DIFICULDADE_ESCOLHAS)
 

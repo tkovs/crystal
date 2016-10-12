@@ -1,0 +1,31 @@
+{% extends "crystal/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>Ranking</h1>
+
+{% if tests %}
+<table>
+	<thead>
+		<tr>
+			<th>Autor</th>
+			<th>Nome</th>
+			<th>Dificuldade</th>
+		</tr>
+	</thead>
+	<tbody>
+{% for test in tests %}
+		<tr>
+			<td>{{ test.autor.nome }}</td>
+			<td><a href="{% url 'crystal:test_details' test.id %}">{{ test.titulo }}</a></td>
+			<td>{{ test.dificuldade }}</td>
+		</tr>
+{% endfor %}
+	</tbody>
+</table>
+
+{% else %}
+<p>Nenhuma prova cadastrada até o momento.</p>
+{% endif %}
+{% endblock %}
