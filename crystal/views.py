@@ -28,10 +28,7 @@ def test_details(request, id):
 def ranking(request):
 	template = loader.get_template('crystal/ranking.html')
 	
-	users = Usuario.objects
-					.all()
-					.filter(pontuacao > 0)
-					.order_by('-pontuacao')
+	users = Usuario.objects.all().filter(pontuacao__gt = 0).order_by('-pontuacao')
 
 	context = {'title': 'Crystal - Ranking', 'users': users}
 
