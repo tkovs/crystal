@@ -15,11 +15,11 @@ class Usuario(models.Model):
 
 class Prova(models.Model):
 	DIFICULDADE_ESCOLHAS = (
-		(1, 'FÁCIL'),
-		(2, 'INICIANTE'),
-		(3, 'COMUM'),
-		(4, 'DIFÍCIL'),
-		(5, 'MESTRE'),
+		(1, 'Muito fácil'),
+		(2, 'Fácil'),
+		(3, 'Normal'),
+		(4, 'Difícil'),
+		(5, 'Muito difícil'),
 	)
 
 	titulo      = models.CharField(max_length = 40)

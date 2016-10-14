@@ -3,7 +3,7 @@ from django import forms
 class SubmissaoForm(forms.Form):
 	autor       = forms.CharField(max_length=30)
 	titulo      = forms.CharField(max_length=40)
-	dificuldade = forms.ChoiceField(choices = ((1, 'FÁCIL'), (2, 'INICIANTE'), (3, 'COMUM'), (4, 'DIFÍCIL'), (5, 'MESTRE')))
+	dificuldade = forms.ChoiceField(choices = ((1, 'Muito fácil'), (2, 'Fácil'), (3, 'Médio'), (4, 'Difícil'), (5, 'Muito difícil')))
 
 	enunciado_1 = forms.CharField(max_length=100)
 	questao_1_1 = forms.CharField(max_length=60)
