@@ -18,9 +18,10 @@ def test_list(request):
 	return HttpResponse(template.render(context, request))
 
 def submit_test(request):
+	template = loader.get_template('crystal/submissao.html')
+
 	if request.method == 'GET':
 		test_length = 5 # tamanho da prova
-		template = loader.get_template('crystal/submissao.html')
 		form = SubmissaoForm()
 		context = {
 			'form': form,
@@ -82,8 +83,13 @@ def submit_test(request):
 				                   opcao3    = form.cleaned_data['questao_5_3'],
 				                   opcao4    = form.cleaned_data['questao_5_4']).save()
 
-		return HttpResponse("Prova criada! O id de sua prova é {0}, informe a seus amigos para que possam fazê-la".format(test.id))
+		context = {
+			'title': 'Crystal - Prova submetida!',
+			'test_id': test.id
+		}
 
+		return HttpResponse(template.render(context, request))
+		
 def test_details(request, id):
 	template = loader.get_template('crystal/prova.html')
 	test = Prova.objects.get(id = id)

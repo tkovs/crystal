@@ -3,6 +3,7 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
+{% if form %}
 <h1>Nova prova!</h1>
 
 <form action="{% url 'crystal:submit_test' %}" method="POST">
@@ -10,4 +11,10 @@
     {{ form.as_p }}
     <button type="submit">Submit</button>
 </form>
+{% else %}
+<h1>Prova criada!</h1>
+
+<p>Para compartilha-la com seus amigos, divulgue o link abaixo: </p>
+<p><a href="{% url 'crystal:test_details' test_id %}">{{ request.META.HTTP_HOST }}{% url 'crystal:test_details' test_id %}</a></p>
+{% endif %}
 {% endblock %}
