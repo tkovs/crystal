@@ -5,7 +5,7 @@
 {% block content %}
 <h1>Provas</h1>
 
-<p><a href="#">Submeta sua prova!</a></p>
+<p><a href="{% url 'crystal:submit_test' %}">Submeta sua prova!</a></p>
 
 {% if tests %}
 <table>

@@ -1,0 +1,13 @@
+{% extends "crystal/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>Nova prova!</h1>
+
+<form action="{% url 'crystal:submit_test' %}" method="POST">
+    {% csrf_token %} 
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

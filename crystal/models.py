@@ -33,7 +33,6 @@ class Questao(models.Model):
 	prova      = models.ForeignKey(Prova, on_delete = models.CASCADE)
 	enunciado  = models.CharField(max_length = 100)
 
-	resposta   = models.IntegerField()
 	opcao1     = models.CharField(max_length = 60)
 	opcao2     = models.CharField(max_length = 60)
 	opcao3     = models.CharField(max_length = 60)
