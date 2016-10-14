@@ -8,8 +8,13 @@
 	</head>
 
 	<body>
+	<ul>
+		<li><a href="{% url 'crystal:index' %}">Página principal</a></li>
+		<li><a href="{% url 'crystal:ranking' %}">Ranking</a></li>
+		<li><a href="{% url 'crystal:test_list' %}">Provas</a></li>
+		<li><a href="{% url 'crystal:submit_test' %}">Criar prova</a></li>
+	</ul>
 	{% block content %}
-
 	{% endblock %}
 	</body>
 </html>
