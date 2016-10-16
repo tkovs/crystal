@@ -10,6 +10,9 @@
 
 		<form action="{% url 'crystal:test_details' test.id %}" method="post">
 			{% csrf_token %}
+			<label for="user">Seu apelido:</label>
+			<input id="user" maxlength="30" name="user" type="text" required>
+
 			{% for question in questions %}
 			<p>{{ forloop.counter }}) {{ question.enunciado }}</p>
 			<ul>

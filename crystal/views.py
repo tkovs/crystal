@@ -1,6 +1,6 @@
 from django.http              import HttpResponse
 from django.template          import loader
-from .models                  import Usuario, Prova, Questao
+from .models                  import *
 from .forms                   import SubmissaoForm
 from django.core.urlresolvers import reverse
 from random                   import shuffle
@@ -124,8 +124,14 @@ def test_details(request, id):
 
 		return HttpResponse(template.render(context, request))
 	elif request.method == 'POST':
+		if (Usuario.objects.filter(nome = request.POST['user']).exists()):
+			user = Usuario.objects.get(nome = request.POST['user'])
+			if (Realizado.objects.filter(usuario = user, prova = test).exists()):
+				return HttpResponse('Você já realizou a prova, cai fora!')
+
 		qs = Questao.objects.filter(prova = test) # qs = questions
 		answers = []
+
 		answers.append([qs[0], request.POST['question1']])
 		answers.append([qs[1], request.POST['question2']])
 		answers.append([qs[2], request.POST['question3']])
@@ -133,6 +139,16 @@ def test_details(request, id):
 		answers.append([qs[4], request.POST['question5']])
 
 		result = sum([check_question(answer[0], answer[1]) for answer in answers])
+
+		if (not Usuario.objects.filter(nome = request.POST['user']).exists()):
+			new_user = Usuario.objects.create(nome = request.POST['user'], pontuacao = result)
+			new_user.save()
+			Realizado.objects.create(usuario = new_user, prova = test).save()
+		else:
+			user = Usuario.objects.get(nome = request.POST['user'])
+			user.pontuacao += result
+			user.save()
+			Realizado.objects.create(usuario = user, prova = test).save()
 
 		context = {
 			'title': "Crystal - {0}".format(test.titulo),
