@@ -103,7 +103,10 @@ def shuffle_question(question):
 
 def check_question(question, answer):
 	question = Questao.objects.get(id = question.id)
-	return answer == question.opcao1
+	if answer == question.opcao1:
+		return 1
+
+	return 0
 		
 def test_details(request, id):
 	template = loader.get_template('crystal/prova.html')
@@ -121,15 +124,23 @@ def test_details(request, id):
 
 		return HttpResponse(template.render(context, request))
 	elif request.method == 'POST':
-		questions = Questao.objects.filter(prova = test)
+		qs = Questao.objects.filter(prova = test) # qs = questions
 		answers = []
-		answers.append([questions[0].enunciado, questions[0].opcao1, request.POST['question1'], check_question(questions[0], request.POST['question1'])])
-		answers.append([questions[1].enunciado, questions[1].opcao1, request.POST['question2'], check_question(questions[1], request.POST['question2'])])
-		answers.append([questions[2].enunciado, questions[2].opcao1, request.POST['question3'], check_question(questions[2], request.POST['question3'])])
-		answers.append([questions[3].enunciado, questions[3].opcao1, request.POST['question4'], check_question(questions[3], request.POST['question4'])])
-		answers.append([questions[4].enunciado, questions[4].opcao1, request.POST['question5'], check_question(questions[4], request.POST['question5'])])
-		
-		return HttpResponse("Respostas: {0}".format(answers))
+		answers.append([qs[0], request.POST['question1']])
+		answers.append([qs[1], request.POST['question2']])
+		answers.append([qs[2], request.POST['question3']])
+		answers.append([qs[3], request.POST['question4']])
+		answers.append([qs[4], request.POST['question5']])
+
+		result = sum([check_question(answer[0], answer[1]) for answer in answers])
+
+		context = {
+			'title': "Crystal - {0}".format(test.titulo),
+			'answers': answers,
+			'result': result
+		}
+
+		return HttpResponse(template.render(context, request))
 
 def ranking(request):
 	template = loader.get_template('crystal/ranking.html')

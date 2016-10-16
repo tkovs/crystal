@@ -3,6 +3,7 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
+	{% if test %}
 		<h1>{{ test.titulo }}</h1>
 
 		<p>Autor: {{ test.autor.nome }}</p>
@@ -11,30 +12,38 @@
 			{% csrf_token %}
 			{% for question in questions %}
 			<p>{{ forloop.counter }}) {{ question.enunciado }}</p>
-				<ul>
-					<li>
-						<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao1 }}" />
-						<label>a) {{ question.opcao1 }}</label>
-					</li>
-					
-					<li>
-						<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao2 }}" />
-						<label>b) {{ question.opcao2 }}</label>
-					</li>
-					
-					<li>
-						<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao3 }}" />
-						<label>c) {{ question.opcao3 }}</label>
-					</li>
-					
-					<li>
-						<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao4 }}" />
-						<label>d) {{ question.opcao4 }}</label>
-					</li>
-				</ul>
-			</p>
-
+			<ul>
+				<li>
+					<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao1 }}" />
+					<label>a) {{ question.opcao1 }}</label>
+				</li>
+				
+				<li>
+					<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao2 }}" />
+					<label>b) {{ question.opcao2 }}</label>
+				</li>
+				
+				<li>
+					<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao3 }}" />
+					<label>c) {{ question.opcao3 }}</label>
+				</li>
+				
+				<li>
+					<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao4 }}" />
+					<label>d) {{ question.opcao4 }}</label>
+				</li>
+			</ul>
+			<br />
 			{% endfor %}
 			<input type="submit" value="Finalizar" />
 		</form>
+	{% else %}
+		{% for answer in answers %}
+		<p><b>Questão {{ forloop.counter }}</b>: {{ answer.0.enunciado }}</p>
+		<p>Resposta correta: {{ answer.0.opcao1 }}</p>
+		<p>Resposta marcada: {{ answer.1 }}</p>
+		<br />
+		{% endfor %}
+		<p><strong>Resultado: {{ result }} questões de 5.</strong></p>
+	{% endif %}
 {% endblock %}
