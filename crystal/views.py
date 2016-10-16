@@ -1,8 +1,9 @@
-from django.http     import HttpResponse
-from django.template import loader
-from .models         import Usuario, Prova, Questao
-from .forms          import SubmissaoForm
+from django.http              import HttpResponse
+from django.template          import loader
+from .models                  import Usuario, Prova, Questao
+from .forms                   import SubmissaoForm
 from django.core.urlresolvers import reverse
+from random                   import shuffle
 
 def index(request):
 	template = loader.get_template('crystal/index.html')
@@ -89,16 +90,46 @@ def submit_test(request):
 		}
 
 		return HttpResponse(template.render(context, request))
+
+def shuffle_question(question):
+	options = [question.opcao1, question.opcao2, question.opcao3, question.opcao4]
+	shuffle(options)
+	question.opcao1 = options[0]
+	question.opcao2 = options[1]
+	question.opcao3 = options[2]
+	question.opcao4 = options[3]
+
+	return question
+
+def check_question(question, answer):
+	question = Questao.objects.get(id = question.id)
+	return answer == question.opcao1
 		
 def test_details(request, id):
 	template = loader.get_template('crystal/prova.html')
 	test = Prova.objects.get(id = id)
-	context = {
-		'title': "Crystal - {0}".format(test.titulo),
-		'test': test
-	}
+	
+	if request.method == 'GET':
+		questions = Questao.objects.filter(prova = test)
+		questions = [shuffle_question(question) for question in questions]
 
-	return HttpResponse(template.render(context, request))
+		context = {
+			'title': "Crystal - {0}".format(test.titulo),
+			'test': test,
+			'questions': questions
+		}
+
+		return HttpResponse(template.render(context, request))
+	elif request.method == 'POST':
+		questions = Questao.objects.filter(prova = test)
+		answers = []
+		answers.append([questions[0].enunciado, questions[0].opcao1, request.POST['question1'], check_question(questions[0], request.POST['question1'])])
+		answers.append([questions[1].enunciado, questions[1].opcao1, request.POST['question2'], check_question(questions[1], request.POST['question2'])])
+		answers.append([questions[2].enunciado, questions[2].opcao1, request.POST['question3'], check_question(questions[2], request.POST['question3'])])
+		answers.append([questions[3].enunciado, questions[3].opcao1, request.POST['question4'], check_question(questions[3], request.POST['question4'])])
+		answers.append([questions[4].enunciado, questions[4].opcao1, request.POST['question5'], check_question(questions[4], request.POST['question5'])])
+		
+		return HttpResponse("Respostas: {0}".format(answers))
 
 def ranking(request):
 	template = loader.get_template('crystal/ranking.html')

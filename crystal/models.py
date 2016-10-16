@@ -39,7 +39,7 @@ class Questao(models.Model):
 	opcao4     = models.CharField(max_length = 60)
 
 	def __str__(self):
-		return "{0} ~ {1}".format(self.disciplina, self.enunciado)
+		return "{0}".format(self.enunciado)
 
 class Realizado(models.Model):
 	usuario = models.ForeignKey(Usuario, on_delete = models.CASCADE)
