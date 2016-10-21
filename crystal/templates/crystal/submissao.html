@@ -6,10 +6,46 @@
 {% if form %}
 <h1>Nova prova!</h1>
 
+<p>Obs.: Sempre insira a resposta correta na letra a. Posteriormente, nós trocaremos as opções.</p>
+
 <form action="{% url 'crystal:submit_test' %}" method="POST">
     {% csrf_token %} 
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
+ 
+    <p><label for="id_autor">Autor:</label> <input id="id_autor" maxlength="30" name="autor" type="text" required /></p>
+	<p><label for="id_titulo">Titulo:</label> <input id="id_titulo" maxlength="40" name="titulo" type="text" required /></p>
+	<p><label for="id_dificuldade">Dificuldade:</label> <select id="id_dificuldade" name="dificuldade" required>
+	<option value="1">Muito fácil</option>
+	<option value="2">Fácil</option>
+	<option value="3">Médio</option>
+	<option value="4">Difícil</option>
+	<option value="5">Muito difícil</option>
+	</select></p>
+	<p><label for="id_enunciado_1">1ª Questão:</label> <input id="id_enunciado_1" maxlength="100" name="enunciado_1" type="text" required /></p>
+	<p><label for="id_questao_1_1">Opção a):</label> <input id="id_questao_1_1" maxlength="60" name="questao_1_1" type="text" required /></p>
+	<p><label for="id_questao_1_2">Opção b):</label> <input id="id_questao_1_2" maxlength="60" name="questao_1_2" type="text" required /></p>
+	<p><label for="id_questao_1_3">Opção c):</label> <input id="id_questao_1_3" maxlength="60" name="questao_1_3" type="text" required /></p>
+	<p><label for="id_questao_1_4">Opção d):</label> <input id="id_questao_1_4" maxlength="60" name="questao_1_4" type="text" required /></p>
+	<p><label for="id_enunciado_2">2ª Questão:</label> <input id="id_enunciado_2" maxlength="100" name="enunciado_2" type="text" required /></p>
+	<p><label for="id_questao_2_1">Opção a):</label> <input id="id_questao_2_1" maxlength="60" name="questao_2_1" type="text" required /></p>
+	<p><label for="id_questao_2_2">Opção b):</label> <input id="id_questao_2_2" maxlength="60" name="questao_2_2" type="text" required /></p>
+	<p><label for="id_questao_2_3">Opção c):</label> <input id="id_questao_2_3" maxlength="60" name="questao_2_3" type="text" required /></p>
+	<p><label for="id_questao_2_4">Opção d):</label> <input id="id_questao_2_4" maxlength="60" name="questao_2_4" type="text" required /></p>
+	<p><label for="id_enunciado_3">3ª Questão:</label> <input id="id_enunciado_3" maxlength="100" name="enunciado_3" type="text" required /></p>
+	<p><label for="id_questao_3_1">Opção a):</label> <input id="id_questao_3_1" maxlength="60" name="questao_3_1" type="text" required /></p>
+	<p><label for="id_questao_3_2">Opção b):</label> <input id="id_questao_3_2" maxlength="60" name="questao_3_2" type="text" required /></p>
+	<p><label for="id_questao_3_3">Opção c):</label> <input id="id_questao_3_3" maxlength="60" name="questao_3_3" type="text" required /></p>
+	<p><label for="id_questao_3_4">Opção d):</label> <input id="id_questao_3_4" maxlength="60" name="questao_3_4" type="text" required /></p>
+	<p><label for="id_enunciado_4">4ª Questão:</label> <input id="id_enunciado_4" maxlength="100" name="enunciado_4" type="text" required /></p>
+	<p><label for="id_questao_4_1">Opção a):</label> <input id="id_questao_4_1" maxlength="60" name="questao_4_1" type="text" required /></p>
+	<p><label for="id_questao_4_2">Opção b):</label> <input id="id_questao_4_2" maxlength="60" name="questao_4_2" type="text" required /></p>
+	<p><label for="id_questao_4_3">Opção c):</label> <input id="id_questao_4_3" maxlength="60" name="questao_4_3" type="text" required /></p>
+	<p><label for="id_questao_4_4">Opção d):</label> <input id="id_questao_4_4" maxlength="60" name="questao_4_4" type="text" required /></p>
+	<p><label for="id_enunciado_5">5ª Questão:</label> <input id="id_enunciado_5" maxlength="100" name="enunciado_5" type="text" required /></p>
+	<p><label for="id_questao_5_1">Opção a):</label> <input id="id_questao_5_1" maxlength="60" name="questao_5_1" type="text" required /></p>
+	<p><label for="id_questao_5_2">Opção b):</label> <input id="id_questao_5_2" maxlength="60" name="questao_5_2" type="text" required /></p>
+	<p><label for="id_questao_5_3">Opção c):</label> <input id="id_questao_5_3" maxlength="60" name="questao_5_3" type="text" required /></p>
+	<p><label for="id_questao_5_4">Opção d):</label> <input id="id_questao_5_4" maxlength="60" name="questao_5_4" type="text" required /></p>
+    <button type="submit">Criar prova</button>
 </form>
 {% else %}
 <h1>Prova criada!</h1>
