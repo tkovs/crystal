@@ -31,12 +31,12 @@ class Prova(models.Model):
 
 class Questao(models.Model):
 	prova      = models.ForeignKey(Prova, on_delete = models.CASCADE)
-	enunciado  = models.CharField(max_length = 100)
+	enunciado  = models.CharField(max_length = 300)
 
-	opcao1     = models.CharField(max_length = 60)
-	opcao2     = models.CharField(max_length = 60)
-	opcao3     = models.CharField(max_length = 60)
-	opcao4     = models.CharField(max_length = 60)
+	opcao1     = models.CharField(max_length = 150)
+	opcao2     = models.CharField(max_length = 150)
+	opcao3     = models.CharField(max_length = 150)
+	opcao4     = models.CharField(max_length = 150)
 
 	def __str__(self):
 		return "{0}".format(self.enunciado)
