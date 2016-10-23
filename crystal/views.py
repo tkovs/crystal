@@ -1,4 +1,4 @@
-from django.http              import HttpResponse
+from django.http              import HttpResponse, HttpResponseRedirect
 from django.template          import loader
 from .models                  import *
 from .forms                   import SubmissaoForm
@@ -127,7 +127,7 @@ def test_details(request, id):
 		if (Usuario.objects.filter(nome = request.POST['user']).exists()):
 			user = Usuario.objects.get(nome = request.POST['user'])
 			if (Realizado.objects.filter(usuario = user, prova = test).exists()):
-				return HttpResponse('Você já realizou a prova, cai fora!')
+				return HttpResponseRedirect('/crystal/')
 
 		qs = Questao.objects.filter(prova = test) # qs = questions
 		answers = []
