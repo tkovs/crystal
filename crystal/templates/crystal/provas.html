@@ -1,11 +1,16 @@
 {% extends "crystal/base.html" %}
+{% load staticfiles %}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
 <h1>Provas</h1>
 
-<p><a href="{% url 'crystal:submit_test' %}">Submeta sua prova!</a></p>
+<div>
+	<img src="{% static 'crystal/img/bear.png' %}" align="left" style="width: 100px; ">
+	<p> &nbsp; <i>Vai encarar uma prova?!?! grrrrr! Clique sobre o título de uma prova, informe seu nome a ser colocado no ranking e comece já a resolvê-la. Ganhei mais pontos que todo mundo e seja o melhor!</i></p>
+	<p><a href="{% url 'crystal:submit_test' %}"> Submeta sua prova!</a></p>
+</div>
 
 {% if tests %}
 <table>

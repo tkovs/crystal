@@ -1,9 +1,15 @@
 {% extends "crystal/base.html" %}
+{% load staticfiles %}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
 <h1>Ranking</h1>
+
+<div>
+	<img src="{% static 'crystal/img/duncan.png' %}" align="left" style="width: 150px; ">
+	<p> &nbsp; <i>Primeiro lugar é meu mermão, nem adianta querer passar! rééé</i></p>
+</div>
 
 {% if users %}
 <table class="ranking">
