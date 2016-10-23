@@ -14,31 +14,26 @@
 			<input id="user" maxlength="30" name="user" type="text" required>
 
 			{% for question in questions %}
-			<p>{{ forloop.counter }}) {{ question.enunciado }}</p>
-			<ul>
-				<li>
-					<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao1 }}" />
-					<label>a) {{ question.opcao1 }}</label>
-				</li>
+			<div class="questao">
+				<p>{{ forloop.counter }}) {{ question.enunciado }}</p>
 				
-				<li>
-					<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao2 }}" />
-					<label>b) {{ question.opcao2 }}</label>
-				</li>
-				
-				<li>
-					<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao3 }}" />
-					<label>c) {{ question.opcao3 }}</label>
-				</li>
-				
-				<li>
-					<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao4 }}" />
-					<label>d) {{ question.opcao4 }}</label>
-				</li>
-			</ul>
-			<br />
+				<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao1 }}" />
+				<label>a) {{ question.opcao1 }}</label>
+				<br />
+
+				<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao2 }}" />
+				<label>b) {{ question.opcao2 }}</label>
+				<br />
+
+				<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao3 }}" />
+				<label>c) {{ question.opcao3 }}</label>
+				<br />
+
+				<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao4 }}" />
+				<label>d) {{ question.opcao4 }}</label>
+				</div>
 			{% endfor %}
-			<input type="submit" value="Finalizar" />
+			<input type="submit" value="Finalizar" style="margin: 20px 0;"/>
 		</form>
 	{% else %}
 		{% for answer in answers %}

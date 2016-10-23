@@ -6,6 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta charset='utf-8' />
 
+		<link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet"> 
+
 		<link rel="stylesheet" type="text/css" href="http://www.w3schools.com/lib/w3.css">
 		<link rel="stylesheet" type="text/css" href="{% static 'crystal/css/crystal.css' %}">
 
@@ -23,21 +25,22 @@
 			<li class="w3-hide-small"><a href="{% url 'crystal:ranking' %}">Ranking</a></li>
 		</ul>
 
-		<div id="demo" class="w3-hide w3-hide-large w3-hide-medium">
+		<div id="menu-pequeno" class="w3-hide w3-hide-large w3-hide-medium">
 			<ul class="w3-navbar w3-left-align w3-large w3-black">
 				<li><a href="{% url 'crystal:index' %}">Página principal</a></li>
 				<li><a href="{% url 'crystal:test_list' %}">Provas</a></li>
 				<li><a href="{% url 'crystal:ranking' %}">Ranking</a></li>
 			</ul>
 		</div>
-		<div class="w3-container">
+
+		<div class="w3-container" id="conteudo">
 			{% block content %}
 			{% endblock %}
 		</div>
 
 		<script>
 			function myFunction() {
-				var x = document.getElementById("demo");
+				var x = document.getElementById("menu-pequeno");
 			
 				if (x.className.indexOf("w3-show") == -1) {
 						x.className += " w3-show";

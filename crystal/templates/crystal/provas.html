@@ -19,9 +19,9 @@
 	<tbody>
 {% for test in tests %}
 		<tr>
-			<td>{{ test.autor.nome }}</td>
-			<td><a href="{% url 'crystal:test_details' test.id %}">{{ test.titulo }}</a></td>
-			<td>{{ test.dificuldade }}</td>
+			<td class="autor">{{ test.autor.nome }}</td>
+			<td class="titulo"><a href="{% url 'crystal:test_details' test.id %}">{{ test.titulo }}</a></td>
+			<td class="dificuldade">{{ test.dificuldade }}</td>
 		</tr>
 {% endfor %}
 	</tbody>
