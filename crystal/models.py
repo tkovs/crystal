@@ -37,6 +37,7 @@ class Questao(models.Model):
 	opcao2     = models.CharField(max_length = 150)
 	opcao3     = models.CharField(max_length = 150)
 	opcao4     = models.CharField(max_length = 150)
+	opcao5     = models.CharField(max_length = 150, default='Nenhuma das alternativas')
 
 	def __str__(self):
 		return "{0}".format(self.enunciado)

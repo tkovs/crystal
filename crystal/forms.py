@@ -10,29 +10,34 @@ class SubmissaoForm(forms.Form):
 	questao_1_2 = forms.CharField(max_length=150)
 	questao_1_3 = forms.CharField(max_length=150)
 	questao_1_4 = forms.CharField(max_length=150)
+	questao_1_5 = forms.CharField(max_length=150)
 
 	enunciado_2 = forms.CharField(max_length=300)
 	questao_2_1 = forms.CharField(max_length=150)
 	questao_2_2 = forms.CharField(max_length=150)
 	questao_2_3 = forms.CharField(max_length=150)
 	questao_2_4 = forms.CharField(max_length=150)
+	questao_2_5 = forms.CharField(max_length=150)
 
 	enunciado_3 = forms.CharField(max_length=300)
 	questao_3_1 = forms.CharField(max_length=150)
 	questao_3_2 = forms.CharField(max_length=150)
 	questao_3_3 = forms.CharField(max_length=150)
 	questao_3_4 = forms.CharField(max_length=150)
+	questao_3_5 = forms.CharField(max_length=150)
 
 	enunciado_4 = forms.CharField(max_length=300)
 	questao_4_1 = forms.CharField(max_length=150)
 	questao_4_2 = forms.CharField(max_length=150)
 	questao_4_3 = forms.CharField(max_length=150)
 	questao_4_4 = forms.CharField(max_length=150)
+	questao_4_5 = forms.CharField(max_length=150)
 
 	enunciado_5 = forms.CharField(max_length=300)
 	questao_5_1 = forms.CharField(max_length=150)
 	questao_5_2 = forms.CharField(max_length=150)
 	questao_5_3 = forms.CharField(max_length=150)
 	questao_5_4 = forms.CharField(max_length=150)
+	questao_5_5 = forms.CharField(max_length=150)
 
 	

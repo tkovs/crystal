@@ -34,6 +34,10 @@
 
 				<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao4 }}" />
 				<label>d) {{ question.opcao4 }}</label>
+				<br />
+
+				<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao5 }}" />
+				<label>e) {{ question.opcao5 }}</label>
 				</div>
 			{% endfor %}
 			<input type="submit" value="Finalizar" style="margin: 20px 0;"/>

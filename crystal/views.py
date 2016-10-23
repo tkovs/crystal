@@ -54,35 +54,40 @@ def submit_test(request):
 				                   opcao1    = form.cleaned_data['questao_1_1'],
 				                   opcao2    = form.cleaned_data['questao_1_2'],
 				                   opcao3    = form.cleaned_data['questao_1_3'],
-				                   opcao4    = form.cleaned_data['questao_1_4']).save()
+				                   opcao4    = form.cleaned_data['questao_1_4'],
+				                   opcao5    = form.cleaned_data['questao_1_5']).save()
 
 			Questao.objects.create(prova     = test,
 				                   enunciado = form.cleaned_data['enunciado_2'],
 				                   opcao1    = form.cleaned_data['questao_2_1'],
 				                   opcao2    = form.cleaned_data['questao_2_2'],
 				                   opcao3    = form.cleaned_data['questao_2_3'],
-				                   opcao4    = form.cleaned_data['questao_2_4']).save()
+				                   opcao4    = form.cleaned_data['questao_2_4'],
+				                   opcao5    = form.cleaned_data['questao_2_5']).save()
 
 			Questao.objects.create(prova     = test,
 				                   enunciado = form.cleaned_data['enunciado_3'],
 				                   opcao1    = form.cleaned_data['questao_3_1'],
 				                   opcao2    = form.cleaned_data['questao_3_2'],
 				                   opcao3    = form.cleaned_data['questao_3_3'],
-				                   opcao4    = form.cleaned_data['questao_3_4']).save()
+				                   opcao4    = form.cleaned_data['questao_3_4'],
+				                   opcao5    = form.cleaned_data['questao_3_5']).save()
 
 			Questao.objects.create(prova     = test,
 				                   enunciado = form.cleaned_data['enunciado_4'],
 				                   opcao1    = form.cleaned_data['questao_4_1'],
 				                   opcao2    = form.cleaned_data['questao_4_2'],
 				                   opcao3    = form.cleaned_data['questao_4_3'],
-				                   opcao4    = form.cleaned_data['questao_4_4']).save()
+				                   opcao4    = form.cleaned_data['questao_4_4'],
+				                   opcao5    = form.cleaned_data['questao_4_5']).save()
 
 			Questao.objects.create(prova     = test,
 				                   enunciado = form.cleaned_data['enunciado_5'],
 				                   opcao1    = form.cleaned_data['questao_5_1'],
 				                   opcao2    = form.cleaned_data['questao_5_2'],
 				                   opcao3    = form.cleaned_data['questao_5_3'],
-				                   opcao4    = form.cleaned_data['questao_5_4']).save()
+				                   opcao4    = form.cleaned_data['questao_5_4'],
+				                   opcao5    = form.cleaned_data['questao_5_5']).save()
 
 		context = {
 			'title': 'Crystal - Prova submetida!',
@@ -92,12 +97,13 @@ def submit_test(request):
 		return HttpResponse(template.render(context, request))
 
 def shuffle_question(question):
-	options = [question.opcao1, question.opcao2, question.opcao3, question.opcao4]
+	options = [question.opcao1, question.opcao2, question.opcao3, question.opcao4, question.opcao5]
 	shuffle(options)
 	question.opcao1 = options[0]
 	question.opcao2 = options[1]
 	question.opcao3 = options[2]
 	question.opcao4 = options[3]
+	question.opcao5 = options[4]
 
 	return question
 
