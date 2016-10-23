@@ -1,6 +1,6 @@
 from django.http              import HttpResponse, HttpResponseRedirect
 from django.template          import loader
-from .models                  import *
+from .models                  import Usuario, Prova, Questao, Realizado
 from .forms                   import SubmissaoForm
 from django.core.urlresolvers import reverse
 from random                   import shuffle
