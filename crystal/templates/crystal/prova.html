@@ -6,7 +6,10 @@
 	{% if test %}
 		<h1>{{ test.titulo }}</h1>
 
-		<p>Autor: {{ test.autor.nome }}</p>
+		<p>
+			Autor: {{ test.autor.nome }}<br/>
+			Dificuldade: {{ test.dificuldade }}
+		</p>
 
 		<form action="{% url 'crystal:test_details' test.id %}" method="post">
 			{% csrf_token %}
@@ -17,7 +20,7 @@
 			<div class="questao">
 				<p>{{ forloop.counter }}) {{ question.enunciado }}</p>
 				
-				<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao1 }}" />
+				<input type="radio" name="question{{ forloop.counter }}" value="{{ question.opcao1 }}" required/>
 				<label>a) {{ question.opcao1 }}</label>
 				<br />
 
@@ -37,10 +40,15 @@
 		</form>
 	{% else %}
 		{% for answer in answers %}
-		<p><b>Questão {{ forloop.counter }}</b>: {{ answer.0.enunciado }}</p>
-		<p>Resposta correta: {{ answer.0.opcao1 }}</p>
-		<p>Resposta marcada: {{ answer.1 }}</p>
-		<br />
+		<p>
+			<b>Questão {{ forloop.counter }}</b>: {{ answer.0.enunciado }}<br />
+			&nbsp; &nbsp; &nbsp; Resposta correta: {{ answer.0.opcao1 }}<br />
+			{% if answer.0.opcao1 == answer.1 %}
+			&nbsp; &nbsp; &nbsp; Resposta marcada: <span class="certo">{{ answer.1 }}</span>
+			{% else %}
+			&nbsp; &nbsp; &nbsp; Resposta marcada: <span class="errado">{{ answer.1 }}<span>
+			{% endif %}
+		</p>
 		{% endfor %}
 		<p><strong>Resultado: {{ result }} questões de 5.</strong></p>
 	{% endif %}
