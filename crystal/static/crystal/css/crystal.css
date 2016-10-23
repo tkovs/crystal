@@ -29,8 +29,16 @@ body {
 	text-align: center;
 }
 
+.ranking {
+	margin-bottom: 50px;
+}
+
 .autor, .titulo {
 	padding-left: 10px;
+}
+
+.ranking td {
+	text-align: center;
 }
 
 .errado {
