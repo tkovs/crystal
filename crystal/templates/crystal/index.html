@@ -1,9 +1,14 @@
 {% extends "crystal/base.html" %}
+{% load static %}
 
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<h1>Crystal</h1>
+<h1><img src="{% static 'crystal/img/icon.png' %}" style="margin: auto; width: 50px;" /> Crystal <img src="{% static 'crystal/img/icon.png' %}" style="margin: auto; width: 50px;" /></h1>
 
-<p>Olá, mundo!</p>
+<div>
+	<img src="{% static 'crystal/img/yeah.png' %}" align="left" style="margin: 0px 10px 10px 0px">
+	<p>Olá! Bem vindo ao Crystal. Nosso site tem o objetivo de oferecer a você a possibilidade de criar provas, dos mais variados níveis, relacionadas aos mais diversos temas, e compartilha-las com seus amigos para que vejam a pontuação que fazem e entrem para o ranking, descobrindo quem é o melhor!</p>
+	<p>Esse site foi construído como tarefa da disciplina de Programação Web do Instituto Federal de Educação, Ciência e Tecnologia de Alagoas (Campus Arapiraca). As ferramentas usadas foram: Python + Django + Vim rodando no Arch Linux. Nossa equipe é composta pelos seguintes membros: João Vitor, Francyelly e Monique.</p>
+</div>
 {% endblock %}
