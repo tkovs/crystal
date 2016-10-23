@@ -13,12 +13,17 @@ body {
 
 .questao {
 	background-color: #ccccc3;
-	padding: 0 10px;
+	padding: 10px;
+	margin-bottom: 15px;
 	border-radius: 10px;
 }
 
 .w3-navbar {
 	background-color: #444247 !important;
+}
+
+.w3-input {
+	padding: 0px !important;
 }
 
 .w3-navbar li a {
