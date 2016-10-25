@@ -107,11 +107,8 @@ def test_details(request, id):
 		qs = Questao.objects.filter(prova = test) # qs = questions
 		answers = []
 
-		answers.append([qs[0], request.POST['question1']])
-		answers.append([qs[1], request.POST['question2']])
-		answers.append([qs[2], request.POST['question3']])
-		answers.append([qs[3], request.POST['question4']])
-		answers.append([qs[4], request.POST['question5']])
+		for q in range(len(qs)):
+			answers.append([qs[q], request.POST["question{0}".format(q + 1)]])
 
 		result = sum([check_question(answer[0], answer[1]) for answer in answers])
 
