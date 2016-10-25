@@ -1,0 +1,96 @@
+body {
+	font-family: 'Patrick Hand', cursive;
+	font-size: 25px;
+	color: #444247;
+
+	background-color: #DEDED6;
+}
+
+p {
+	text-align: justify;
+}
+
+#conteudo {
+	max-width: 760px;
+	margin: 0 auto;
+}
+
+.questao {
+	background-color: #ccccc3;
+	padding: 10px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+	border-radius: 10px;
+}
+
+.w3-navbar {
+	background-color: #444247 !important;
+}
+
+.w3-input {
+	padding: 0px !important;
+}
+
+.w3-navbar li a {
+	color: #D5C5AC !important;
+}
+
+.dificuldade {
+	text-align: center;
+}
+
+.ranking {
+	margin-bottom: 50px;
+}
+
+.autor, .titulo {
+	padding-left: 10px;
+}
+
+.ranking td {
+	text-align: center;
+}
+
+.errado {
+	color: red;
+}
+
+.certo {
+	color: green;
+}
+
+table {
+	width: 100%;
+}
+
+th, td{
+	text-align: left;
+}
+
+table a {
+	text-decoration: none;
+}
+
+table a:hover {
+	text-decoration: underline;
+}
+
+tr:nth-child(even){
+	background-color: #CCCCC3;
+}
+
+th {
+    background-color: #444247;
+    color: #DEDED6;
+    text-align: center;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-align: center;
+	color: #444247;
+	font-family: 'Patrick Hand', cursive;
+}
